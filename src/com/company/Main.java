@@ -1,8 +1,6 @@
 package com.company;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -58,7 +56,6 @@ public class Main {
             System.out.println("Enter 2 for Subtraction");
             System.out.println("Enter 3 for Multiplication");
             System.out.println("Enter 4 for Division");
-
 //-------------- Failed attempt at validation loop
 //            String tempOperations = mrRoboto.nextLine();
 //            int operations;
@@ -71,17 +68,19 @@ public class Main {
 //                }
 
             //code block to validate input is integer only
-            while (!mrRoboto.hasNextInt()){
-                mrRoboto.nextLine();
+            int operationsInt = Integer.parseInt(mrRoboto.nextLine());
+
+            while (!mrRoboto.hasNextInt(operationsInt)){
                 System.out.println("Sorry, you need to enter a number only.");
+//                int operations = (tempChoice);
             }
             //code block to validate choice is between 1-4 only **NOT WORKING**
-//            while (!(Integer.parseInt(mrRoboto.nextLine()) < 5 || (Integer.parseInt(mrRoboto.nextLine()) > 0))) {
+            while (!((operationsInt) < 5)/* || (Integer.parseInt(mrRoboto.nextLine()) > 0))*/) {
 //                mrRoboto.nextLine();
-//                System.out.println("Please pick from 1 to 4 for the operation choice.");
-//          }
+                System.out.println("Please pick from 1 to 4 for the operation choice.");
+                }
 
-                int operations = Integer.parseInt(mrRoboto.nextLine());
+                double operations = (double) operationsInt;
                 //small array to store user choices
                 double[] answers = new double[3];
                 answers[0] = userNumber1;
@@ -123,10 +122,15 @@ public class Main {
                 //in the next line, developer opted to display what was originally entered by the user instead of a parsed int or double.
                 System.out.println(userInput1 + " " + opChoiceString + " " + userInput2 + " = " + opChoiceCalc);
                 System.out.println("");
+
                 //asks the user if they want start over
                 System.out.println("Would you like to use the calculator again? (Yes/No)");
                 useCalc = mrRoboto.nextLine();
 
+                while (!(useCalc.equalsIgnoreCase("yes")) && (!(useCalc.equalsIgnoreCase("no")))) {
+                System.out.println("You seem uncertain, is it 'Yes' or 'No?'");
+                useCalc = mrRoboto.nextLine();
+            }
                 if (useCalc.equalsIgnoreCase("yes")) {
                     System.out.println("Okay, let's start over...");
                     System.out.println("");
